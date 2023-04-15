@@ -13,7 +13,10 @@
   "author": "Rupesh parmar",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.6",
     "ejs": "^2.6.1",
-    "express": "^4.16.4"
+    "express": "^4.16.4",
+    "express-ejs-layouts": "^2.5.0",
+    "mongoose": "^7.0.3"
   }
 }
