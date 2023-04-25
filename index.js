@@ -11,10 +11,6 @@ const passport=require('passport');
 const passportlocal=require('./Config/passport-local-strategy');
 const MongoStore=require('connect-mongo')(session);
 
-var sass = require('node-sass');
-
-
-
 app.use(express.urlencoded());
 app.use(cookieParser());
 app.use(express.static('./Assets'));
