@@ -1,9 +1,22 @@
 const User=require('../Models/users');
 
-module.exports.profile=function(request,response){
+module.exports.profile=async function(request,response){
+const user=await User.findById(request.params.id);
+
     return response.render('user_profile',{
-        title:'User Profile'
+        title:'User Profile',
+        profile_user:user
     })
+}
+
+module.exports.update=async function(req,res){
+  if(req.user.id==req.params.id){
+   await  User.findByIdAndUpdate(req.params.id,req.body);
+   return res.redirect('back');
+  }
+  else{
+    return res.status(401).send('Unauthorized');
+  }
 }
 //action for rendering sign up page
 module.exports.signUp=function(request,response ){
@@ -43,11 +56,13 @@ module.exports.create = async function(req, res) {
   };
 
 module.exports.createSession=function(request,response){
-    console.log("print");
+  request.flash('success','Logged in Successfully')  
+  console.log("print");
     return response.redirect('/');
 }
 module.exports.destroySession = function(req, res,next){
   req.logout(function(err){
+    req.flash('success','Logged Out Successfully')  
     return next(err);
   });
   return res.redirect('/');

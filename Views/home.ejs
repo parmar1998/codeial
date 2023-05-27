@@ -1,31 +1,32 @@
-<h1>Codeial/<%=title%>
-</h1>
-<section id="feed-post">
-        <h4>Posts</h4>
+<link rel="stylesheet" href="/CSS/home.CSS">
+<h1><%=title%></h1>
+<div id="home-container">
+    <section id="feed-posts">
+   
         <!-- Checking for authentication of user -->
-<% if (locals.user){%>
-
-        <form action="/posts/create" id="new-post-form" method="POST">
+        <%if(locals.user){%>
+            <h4>Posts</h4>
+            <form action="/posts/create" id="new-post-form" method="POST">
                 <textarea name="content" id="new-post-content" cols="30" rows="3"
-                        placeholder="What's on your mind today?"></textarea>
+                    placeholder="What's on your mind today?"></textarea>
                 <input type="submit" value="POST">
-        </form>
+            </form>
+            <%}%>
+                <div id="posts-list-container">
+                    <ul>
+                        <% for(post of posts){ %>
+                           <%-include('_post')-%>
+                            <%} %>
+                    </ul>
+                </div>
+    </section>
+    
+</div>
+<section id="user_friends">
+    <h4>Friends</h4>
+    <%for(u of all_users){%>
+        <p>
+            <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
+        </p>
         <%}%>
-
-        <div id="post-list-container">
-                <ul>
-                        <%for(post of posts){%>
-                                <li>
-                                        <p>
-                                                <%=post.content%>
-                                                <br>
-                                                <small>
-                                                        <%=post.user.name%>
-                                                </small>
-                                        </p>t=require
-                                        
-                                </li>
-                                <%}%>
-                </ul>
-        </div>
 </section>

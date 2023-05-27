@@ -1,16 +1,31 @@
+const User=require('../Models/users')
+const Post = require('../Models/post')
 
-const Post=require('../Models/post')
-module.exports.home= async function(req,resp)
-{
-    try{
-        //populate the user from each post too
-        const posts=await Post.find({}).populate('user');
-        resp.render('home',{
-            title:"Codial | Home",
-            posts:posts});
-        }
-    catch(err){
+
+module.exports.home = async function (req, res) {
+    try {
+        // console.log(req.cookies);
+        // res.cookie('user_id', 25);
+        // populate the user of each post
+        const users=await User.find({});
+        const posts = await Post.find({}).populate('user')
+        
+            .populate({
+                path: 'comments',
+                populate: {
+                    path: 'user'
+                }
+            }).
+            exec();
+        return res.render('home', {
+            title: "Codeial | Home",
+            posts: posts,
+            all_users:users
+        });
+    } catch (err) {
         console.error(err);
-        resp.Status(500).send("Internal Server Error")
+        return res.redirect('back');
     }
 }
+
+
