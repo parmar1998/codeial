@@ -1,0 +1,18 @@
+-> From Multer part
+	 - How to get a preview of image selected 
+	 - Beautify the page
+-> Rendering an API
+	 We saw get and delete - In these take care of controller incoming function and in routes take care of the function call and URL.
+-> JWT token
+  	 A Json Web token has 3 parts - header + Payload(containing the actual data of user) + Signature(some algorithm of header and payload)	
+
+Example of JWTtoken
+{
+    "message": "Sign in Successfull, Here 's your token please keep it safe",
+    "data": {
+        "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NDg4YWZmZGI3N2IwNWNhNzZjMmJlMmIiLCJlbWFpbCI6InBhcm1hcnJ1cGVzaDcxOTk4QGdtYWlsLmNvbSIsInBhc3N3b3JkIjoiMTIzNCIsIm5hbWUiOiJSdXBlc2giLCJjcmVhdGVkQXQiOiIyMDIzLTA2LTEzVDE4OjA1OjQ5LjM1M1oiLCJ1cGRhdGVkQXQiOiIyMDIzLTA2LTEzVDE4OjQ1OjQ1LjM0MVoiLCJfX3YiOjAsImF2YXRhciI6IlxcdXBsb2Fkc1xcdXNlcnNcXGF2YXRhcnMvYXZhdGFyLTE2ODY2ODE5NDUzMjktMjQxMjk0NzUyIiwiaWF0IjoxNjg2ODU1NzY4LCJleHAiOjE2ODY4NTU3Nzh9.Lblb8SWURUMCoS8jU2e1V6ad_HJiVAEm0J00UxrsTXA"
+    }
+}
+
+in token we cna see that it is seperated by 3 dots
+	

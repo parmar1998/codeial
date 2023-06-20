@@ -1,32 +1,35 @@
 <link rel="stylesheet" href="/CSS/home.CSS">
-<h1><%=title%></h1>
+<!-- <h1><%=title%></h1> -->
 <div id="home-container">
     <section id="feed-posts">
-   
+        <h4>Posts</h4>
         <!-- Checking for authentication of user -->
         <%if(locals.user){%>
-            <h4>Posts</h4>
             <form action="/posts/create" id="new-post-form" method="POST">
                 <textarea name="content" id="new-post-content" cols="30" rows="3"
-                    placeholder="What's on your mind today?"></textarea>
+                    placeholder="What's on your mind today?" required></textarea>
                 <input type="submit" value="POST">
             </form>
             <%}%>
                 <div id="posts-list-container">
                     <ul>
                         <% for(post of posts){ %>
-                           <%-include('_post')-%>
-                            <%} %>
+                            <%-include('_post')-%>
+                                <%} %>
                     </ul>
                 </div>
     </section>
-    
+
+
+    <section id="user_friends">
+        <h4>Friends</h4>
+        <%for(u of all_users){%>
+            <p>
+                <a href="/users/profile/<%=u.id%>">
+                    <%=u.name%>
+                </a>
+            </p>
+            <%}%>
+    </section>
 </div>
-<section id="user_friends">
-    <h4>Friends</h4>
-    <%for(u of all_users){%>
-        <p>
-            <a href="/users/profile/<%=u.id%>"><%=u.name%></a>
-        </p>
-        <%}%>
-</section>
+<script src="/JS/homePost.js"></script>

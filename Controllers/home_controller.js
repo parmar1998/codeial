@@ -8,7 +8,7 @@ module.exports.home = async function (req, res) {
         // res.cookie('user_id', 25);
         // populate the user of each post
         const users=await User.find({});
-        const posts = await Post.find({}).populate('user')
+        const posts = await Post.find({}).sort('-createdAt').populate('user')
         
             .populate({
                 path: 'comments',
